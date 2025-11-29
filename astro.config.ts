@@ -6,6 +6,7 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import swup from "@swup/astro";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
+// @ts-ignore
 import { defineConfig } from "astro/config";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components"; /* Render the custom directive content */
@@ -15,14 +16,16 @@ import remarkDirective from "remark-directive"; /* Handle directives */
 import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
-import { expressiveCodeConfig } from "./src/config.ts";
-import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
-import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
-import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
-import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
-import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
-import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
+import { expressiveCodeConfig } from "./src/config";
+import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge";
+import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition";
+import { GithubCardComponent } from "./src/plugins/rehype-component-github-card";
+import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype";
+import { remarkExcerpt } from "./src/plugins/remark-excerpt";
+import { remarkReadingTime } from './src/plugins/remark-reading-time';
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
+
+const fontFamily = "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
 
 // https://astro.build/config
 export default defineConfig({
@@ -56,6 +59,7 @@ export default defineConfig({
 			},
 		}),
 		expressiveCode({
+			// @ts-ignore
 			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
 			plugins: [
 				pluginCollapsibleSections(),
@@ -73,10 +77,11 @@ export default defineConfig({
 			},
 			styleOverrides: {
 				codeBackground: "var(--codeblock-bg)",
-				borderRadius: "0.75rem",
+				borderRadius: "0",
 				borderColor: "none",
 				codeFontSize: "0.875rem",
-				codeFontFamily: "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+				codeFontFamily: fontFamily,
+				uiFontFamily: fontFamily,
 				codeLineHeight: "1.5rem",
 				frames: {
 					editorBackground: "var(--codeblock-bg)",
@@ -87,13 +92,16 @@ export default defineConfig({
 					editorActiveTabIndicatorBottomColor: "var(--primary)",
 					editorActiveTabIndicatorTopColor: "none",
 					editorTabBarBorderBottomColor: "var(--codeblock-topbar-bg)",
-					terminalTitlebarBorderBottomColor: "none"
+					terminalTitlebarBorderBottomColor: "none",
+					frameBoxShadowCssValue: "none",
+					terminalIcon: "", // IDK, that's looks good
 				},
 				textMarkers: {
-					delHue: 0,
-					insHue: 180,
-					markHue: 250
-				}
+					delHue: "0",
+					insHue: "180",
+					markHue: "250",
+					inlineMarkerBorderRadius: "0",
+				},
 			},
 			frames: {
 				showCopyToClipboardButton: false,
@@ -120,10 +128,15 @@ export default defineConfig({
 				{
 					components: {
 						github: GithubCardComponent,
+						// @ts-ignore
 						note: (x, y) => AdmonitionComponent(x, y, "note"),
+						// @ts-ignore
 						tip: (x, y) => AdmonitionComponent(x, y, "tip"),
+						// @ts-ignore
 						important: (x, y) => AdmonitionComponent(x, y, "important"),
+						// @ts-ignore
 						caution: (x, y) => AdmonitionComponent(x, y, "caution"),
+						// @ts-ignore
 						warning: (x, y) => AdmonitionComponent(x, y, "warning"),
 					},
 				},

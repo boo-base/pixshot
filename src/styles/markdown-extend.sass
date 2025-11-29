@@ -91,8 +91,7 @@ a.card-github
   margin: 0.5rem 0
   padding: 1.1rem 1.5rem 1.1rem 1.5rem
   color: var(--tw-prose-body)
-  border-radius: var(--radius-large)
-  text-decoration-thickness: 0px
+  text-decoration-thickness: 0
   text-decoration-line: none
 
   &:hover
@@ -109,7 +108,7 @@ a.card-github
 
   &:active
     scale: .98
-    background-color: var(--btn-regular-bg-active);
+    background-color: var(--btn-regular-bg-active)
 
   .gc-titlebar
     display: flex
@@ -166,7 +165,7 @@ a.card-github
   .gc-stars, .gc-forks, .gc-license, .github-logo
     font-weight: 500
     font-size: 0.875rem
-    opacity: 0.9;
+    opacity: 0.9
 
     &:before
       content: ' '
@@ -181,7 +180,7 @@ a.card-github
       mask-size: contain
       mask-position: center
       mask-repeat: no-repeat
-      transition-property: background-color, background;
+      transition-property: background-color, background
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
       transition-duration: 0.15s
 
@@ -214,7 +213,7 @@ a.card-github.fetch-waiting
   .gc-description, .gc-infobar, .gc-avatar
     background-color: var(--tw-prose-body)
     color: transparent
-    opacity: 0.5;
+    opacity: 0.5
     animation: pulsate 2s infinite linear
     user-select: none
 

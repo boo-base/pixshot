@@ -2,7 +2,7 @@
 
 @layer components {
     .card-base {
-        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
+        @apply overflow-hidden bg-[var(--card-bg)] transition /*TODO*/ /*border border-[var(--primary)] border-solid*/ /*DEBUG*/;
     }
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
         @apply transition;
@@ -15,13 +15,13 @@
         before:absolute before:rounded-[inherit] before:inset-0 before:scale-[0.85] hover:before:scale-100 before:-z-10
     }
     .link {
-        @apply transition rounded-md p-1 -m-1 expand-animation;
+        @apply transition p-1 -m-1 expand-animation;
     }
     .link-lg {
-        @apply transition rounded-md p-1.5 -m-1.5 expand-animation;
+        @apply transition p-1.5 -m-1.5 expand-animation;
     }
     .float-panel {
-        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none
+        @apply top-[5.25rem] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none
     }
     .float-panel-closed {
         @apply -translate-y-1 opacity-0 pointer-events-none
@@ -94,7 +94,7 @@
     }
 
     .meta-icon {
-        @apply w-8 h-8 transition rounded-md flex items-center justify-center bg-[var(--btn-regular-bg)]
+        @apply w-8 h-8 transition flex items-center justify-center bg-[var(--btn-regular-bg)]
         text-[var(--btn-content)] mr-2
     }
     .with-divider {
@@ -136,12 +136,47 @@
     transform: translateY(-50%);
 }
 
+@mixin dash($color) {
+    border-image-slice: 1;
+    border-image-source: repeating-linear-gradient(
+                    to right,
+                    $color 0,
+                    $color 5px,
+                    transparent 5px,
+                    transparent 10px
+    );
+}
+
+.border-dash {
+    border: 2px solid transparent;
+    @include dash(var(--line-color));
+}
+
+.nav-border {
+    border-bottom: 2px solid transparent;
+    @include dash(var(--primary));
+}
+
+.divider-border-dash > div {
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    @include dash(var(--line-color));
+
+    &:first-child {
+        border-top: unset;
+    }
+
+    &:last-child {
+        border-bottom: unset;
+    }
+}
+
 .collapsed {
     height: var(--collapsedHeight);
 }
 
 .custom-md spoiler {
-  @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
+  @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden transition-all duration-150;
 
   &:not(:hover) {
     color: var(--codeblock-bg);
@@ -149,4 +184,8 @@
         color: var(--codeblock-bg);
     }
   }
+}
+
+:root {
+    font-family: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }

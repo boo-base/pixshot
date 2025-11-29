@@ -10,10 +10,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
-    "new-post": "node scripts/new-post.js",
+    "new-post": "bun scripts/new-post.js",
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow bun"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -33,9 +33,10 @@
     "@iconify/svelte": "^4.2.0",
     "@swup/astro": "^1.7.0",
     "@tailwindcss/typography": "^0.5.19",
-    "astro": "5.13.10",
+    "astro": "5.15.9",
     "astro-expressive-code": "^0.41.3",
     "astro-icon": "^1.1.5",
+    "caniuse-lite": "^1.0.30001756",
     "hastscript": "^9.0.1",
     "katex": "^0.16.23",
     "markdown-it": "^14.1.0",
@@ -57,6 +58,7 @@
     "sharp": "^0.34.4",
     "stylus": "^0.64.0",
     "svelte": "^5.39.8",
+    "swup": "^4.8.2",
     "tailwindcss": "^3.4.18",
     "typescript": "^5.9.3",
     "unist-util-visit": "^5.0.0"
@@ -64,6 +66,7 @@
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.4",
     "@biomejs/biome": "2.2.5",
+    "@iconify-json/pixelarticons": "^1.2.2",
     "@rollup/plugin-yaml": "^4.1.2",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
