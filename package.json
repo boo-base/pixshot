@@ -1,7 +1,7 @@
 {
-  "name": "fuwari",
+  "name": "meeoow",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -13,7 +13,7 @@
     "new-post": "bun scripts/new-post.js",
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
-    "preinstall": "npx only-allow bun"
+    "preinstall": "echo npx only-allow bun"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -74,6 +74,5 @@
     "@types/sanitize-html": "^2.16.0",
     "postcss-import": "^16.1.1",
     "postcss-nesting": "^13.0.2"
-  },
-  "packageManager": "pnpm@9.14.4"
+  }
 }

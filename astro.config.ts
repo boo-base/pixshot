@@ -16,7 +16,7 @@ import remarkDirective from "remark-directive"; /* Handle directives */
 import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
-import { expressiveCodeConfig } from "./src/config";
+import {expressiveCodeConfig, siteConfig} from "./src/config";
 import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge";
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card";
@@ -29,7 +29,7 @@ const fontFamily = "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Men
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://fuwari.vercel.app/",
+	site: siteConfig.site,
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
