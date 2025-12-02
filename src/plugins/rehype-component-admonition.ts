@@ -1,6 +1,7 @@
 /// <reference types="mdast" />
+
+import type { Parent, RootContent } from "hast";
 import { h } from "hastscript";
-import type {Parent, RootContent} from "hast";
 
 /**
  * Creates an admonition component.
@@ -11,24 +12,28 @@ import type {Parent, RootContent} from "hast";
  * @param {import('mdast').RootContent[]} children - The children elements of the component.
  * @returns {import('mdast').Parent} The created admonition component.
  */
-export function AdmonitionComponent(properties: any, children: RootContent[], type: ('tip' | 'note' | 'important' | 'caution' | 'warning')): Parent {
-    if (!Array.isArray(children) || children.length === 0)
-        return h(
-            "div",
-            {class: "hidden"},
-            'Invalid admonition directive. (Admonition directives must be of block type ":::note{name="name"} <content> :::")',
-        );
+export function AdmonitionComponent(
+	properties: any,
+	children: RootContent[],
+	type: "tip" | "note" | "important" | "caution" | "warning",
+): Parent {
+	if (!Array.isArray(children) || children.length === 0)
+		return h(
+			"div",
+			{ class: "hidden" },
+			'Invalid admonition directive. (Admonition directives must be of block type ":::note{name="name"} <content> :::")',
+		);
 
-    let label: any = null;
-    if (properties?.["has-directive-label"]) {
-        label = children[0]; // The first child is the label
-        // biome-ignore lint/style/noParameterAssign: <check later>
-        children = children.slice(1);
-        label.tagName = "div"; // Change the tag <p> to <div>
-    }
+	let label: any = null;
+	if (properties?.["has-directive-label"]) {
+		label = children[0]; // The first child is the label
+		// biome-ignore lint/style/noParameterAssign: <check later>
+		children = children.slice(1);
+		label.tagName = "div"; // Change the tag <p> to <div>
+	}
 
-    return h("blockquote", {class: `admonition bdm-${type}`}, [
-        h("span", {class: "bdm-title"}, label ? label : type.toUpperCase()),
-        ...children,
-    ]);
+	return h("blockquote", { class: `admonition bdm-${type}` }, [
+		h("span", { class: "bdm-title" }, label ? label : type.toUpperCase()),
+		...children,
+	]);
 }
