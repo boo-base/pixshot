@@ -7,6 +7,9 @@ import type {
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
+// //
+/// !! YOU SHULD EDIT THIS
+// //
 export const siteConfig: SiteConfig = {
 	site: "https://example.com",
 	title: "Title",
@@ -47,7 +50,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.About,
 		{
 			name: "GitHub",
-			url: "https://github.com/saicaca/fuwari", // Internal links should not include the base path, as it is automatically added
+			url: "https://github.com/boo-base/pixshot", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
 		},
 	],

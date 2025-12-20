@@ -1,6 +1,10 @@
 # 💠 Pixshot
 
+## What's this?
 A static blog template built with [Astro](https://astro.build).
+
+## How's this?
+This template forks from [Fuwari](https://github.com/saicaca/fuwari), inherits all its features and contains more feature updates and more beautiful LAF, and is updated regularly from upstream.
 
 [**🖥️ Live Demo (Vercel)**](https://fuwari.vercel.app)
 
@@ -19,10 +23,12 @@ A static blog template built with [Astro](https://astro.build).
 - [x] Search
 - [ ] TOC
 
+> Maybe we'll add the featue of author todo? Yep, Maybe.
+
 ## 🚀 How to Use
 
-1. [Generate a new repository](https://github.com/saicaca/fuwari/generate) from this template or fork this repository.
-2. To edit your blog locally, clone your repository, run `bun install` AND `pnpm add sharp` to install dependencies.
+1. [Generate a new repository](https://github.com/boo-base/pixshot/generate) from this template or fork this repository.
+2. To edit your blog locally, clone your repository, run `bun install` to install dependencies.
     - Install [Bun](https://bun.sh) `scoop install bun` or `brew install bun` if you haven't.
 3. Edit the config file `src/config.ts` to customize your blog.
 4. Run `bun new-post <filename>` to create a new post and edit it in `src/content/posts/`.
@@ -42,17 +48,3 @@ draft: false
 lang: vn      # Set only if the post's language differs from the site's language in `config.ts`
 ---
 ```
-
-## 🏐 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                           | Action                                           |
-|:----------------------------------|:-------------------------------------------------|
-| `bun install` AND `bun add sharp` | Installs dependencies                            |
-| `bun dev`                         | Starts local dev server at `localhost:4321`      |
-| `bun build`                       | Build your production site to `./dist/`          |
-| `bun preview`                     | Preview your build locally, before deploying     |
-| `bun new-post <filename>`         | Create a new post                                |
-| `bun astro ...`                   | Run CLI commands like `astro add`, `astro check` |
-| `bun astro --help`                | Get help using the Astro CLI                     |
