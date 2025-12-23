@@ -1,14 +1,22 @@
 ---
-import type { MarkdownHeading } from "astro";
+import type {MarkdownHeading} from "astro";
 import Categories from "./Categories.astro";
 import Profile from "./Profile.astro";
 import Tag from "./Tags.astro";
+import {siteConfig} from "../../config";
+import TOC from "./TOC.astro";
+import WidgetLayout from "./WidgetLayout.astro";
 
 interface Props {
-	class?: string;
-	headings?: MarkdownHeading[];
+    class?: string;
+    title?: string;
+    headings?: MarkdownHeading[];
 }
 
+const {
+    title = "TOC",
+    headings = [],
+} = Astro.props;
 const className = Astro.props.class;
 ---
 <div id="sidebar" class:list={[className, "w-full"]}>
@@ -20,5 +28,20 @@ const className = Astro.props.class;
         <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
         <div class="border-dash"/>
         <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
+
+        {siteConfig.toc.enable &&
+                <div class="border-dash hidden lg:block"/>
+                <WidgetLayout name={title} id="toc" isCollapsed={false} class="hidden lg:block">
+                    <div id="toc-wrapper" class="transition hidden lg:block">
+                        <div id="toc-inner-wrapper" class="overflow-y-scroll overflow-x-hidden hide-scrollbar">
+                            <div id="toc" class="transition-swup-fade">
+                                <TOC headings={headings}></TOC>
+                            </div>
+                        </div>
+                    </div>
+                </WidgetLayout>}
+        <!-- #toc needs to exist for Swup to work normally -->
+        {!siteConfig.toc.enable &&
+                <div id="toc"></div>}
     </div>
 </div>
